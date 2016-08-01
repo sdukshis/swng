@@ -28,7 +28,11 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-trusty-3.9
+            - llvm-toolchain-trusty-3.8
           packages:
-            - clang-3.9
-      env: CC=clang-3.9 CXX=clang++-3.9
+            - clang-3.8
+      env: CC=clang-3.8 CXX=clang++-3.8
+    - os: osx
+      osx_image: xcode8
+      compiler: clang
+      
