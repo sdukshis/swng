@@ -7,6 +7,13 @@ option(BUILD_TESTS "build unittests" ON)
 include(conanbuildinfo.cmake)
 conan_basic_setup()
 
+if(CMAKE_COMPILER_IS_GNUCXX )
+    add_definitions(
+        -Wall
+        --std=c++14
+    )
+endif()
+
 file(GLOB ${PROJECT_NAME}_SOURCES
     src/*.cpp
 )
