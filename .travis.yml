@@ -1,11 +1,10 @@
 os: linux
 services:
   - docker
-sudo: required
+sudo: false
 dist: trusty
-language: cpp
 install:
-  - sudo pip install conan
+  - pip install conan
   - conan install --build=missing
 
 script:
@@ -23,6 +22,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
+      env: CC=gcc-6 CXX=g++-6
     - compiler: clang
       addons:
         apt:
@@ -30,3 +30,4 @@ matrix:
             - llvm-toolchain-trusty-3.9
           packages:
             - clang-3.9
+        env: CC=clang-3.9 CXX=clang++-3.9
