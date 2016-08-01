@@ -1,7 +1,10 @@
 language: cpp
 sudo: required
 dist: trusty
+
 install:
+  - export CC=$CC_TEMP
+  - export CXX=$CXX_TEMP
   - sudo pip install conan
   - conan install --build=missing
 
@@ -21,7 +24,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-      env: CC=gcc-6 CXX=g++-6
+      env: CC_TEMP=gcc-6 CXX_TEMP=g++-6
     - os: linux
       compiler: clang
       addons:
@@ -31,8 +34,7 @@ matrix:
             - llvm-toolchain-trusty-3.8
           packages:
             - clang-3.8
-      env: CC=clang-3.8 CXX=clang++-3.8
+      env: CC_TEMP=clang-3.8 CXX_TEMP=clang++-3.8
     - os: osx
       osx_image: xcode8
       compiler: clang
-      
