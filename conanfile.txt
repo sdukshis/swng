@@ -1,0 +1,7 @@
+[requires]
+libcurl/7.47.1@lasote/stable
+RapidJSON/1.0.2@SamuelMarks/stable
+gtest/1.7.0@lasote/stable
+
+[generators]
+cmake

@@ -27,3 +27,10 @@
 *.exe
 *.out
 *.app
+
+# Build directory
+build/
+
+# Conan files
+conanbuildinfo.cmake
+conaninfo.txt
