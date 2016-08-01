@@ -5,14 +5,13 @@ dist: trusty
 install:
   - export CC=$CC_TEMP
   - export CXX=$CXX_TEMP
-  - sudo pip install conan
   - conan install --build=missing
 
 script:
-    - mkdir build && cd build
-    - cmake ..
-    - cmake --build .
-    - ctest
+  - mkdir build && cd build
+  - cmake ..
+  - cmake --build .
+  - ctest
 
 matrix:
   include:
@@ -25,6 +24,8 @@ matrix:
           packages:
             - g++-6
       env: CC_TEMP=gcc-6 CXX_TEMP=g++-6
+      before_install:
+        - sudo pip install conan
     - os: linux
       compiler: clang
       addons:
@@ -35,6 +36,11 @@ matrix:
           packages:
             - clang-3.8
       env: CC_TEMP=clang-3.8 CXX_TEMP=clang++-3.8
+      before_install:
+        - sudo pip install conan
     - os: osx
       osx_image: xcode8
       compiler: clang
+      before_install:
+        - brew update
+        - brew install conan
