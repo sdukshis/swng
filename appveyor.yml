@@ -7,7 +7,7 @@ environment:
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
   - pip.exe install conan # It install conan too
-  - conan install
+  - conan install --build=missing
 
 build_script:
   - mkdir build && cd build
