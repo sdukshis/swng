@@ -12,9 +12,9 @@ install:
 build_script:
   - mkdir build && cd build
   - cmake -G"Visual Studio 14 2015 Win64" ..
-  - cmake --build . --config debug
+  - cmake --build . --config release
 
 test_script:
-  - cmd: ctest -C debug -VV
+  - cmd: ctest -C release -VV
 
 

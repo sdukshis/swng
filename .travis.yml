@@ -23,6 +23,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-5
+            - binutils
       env: CC_TEMP=gcc-5 CXX_TEMP=g++-5
       before_install:
         - sudo pip install conan
