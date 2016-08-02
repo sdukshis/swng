@@ -22,18 +22,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-5
-            - binutils
-      env: CC_TEMP=gcc-5 CXX_TEMP=g++-5
-      before_install:
-        - sudo pip install conan
-    - os: linux
-      compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
             - g++-6
       env: CC_TEMP=gcc-6 CXX_TEMP=g++-6
       before_install:
