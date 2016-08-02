@@ -7,10 +7,10 @@ option(BUILD_TESTS "build unittests" ON)
 include(conanbuildinfo.cmake)
 conan_basic_setup()
 
-if(CMAKE_COMPILER_IS_GNUCXX )
+if(UNIX)
     add_definitions(
         -Wall
-        --std=c++14
+        -std=c++11
     )
 endif()
 
@@ -19,7 +19,7 @@ file(GLOB ${PROJECT_NAME}_SOURCES
 )
 
 file(GLOB ${PROJECT_NAME}_HEADERS
-    src/*.cpp
+    src/*.h
 )
 
 add_executable(${PROJECT_NAME}
