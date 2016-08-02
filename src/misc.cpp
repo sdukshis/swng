@@ -33,7 +33,7 @@ std::string get_data_from_url(const std::string &url) {
     if (res != CURLE_OK) {
         auto error = curl_easy_strerror(res);
         curl_easy_cleanup(curl);
-        throw std::runtime_error{error};
+        throw std::runtime_error(error);
     }
     curl_easy_cleanup(curl);
 
@@ -41,7 +41,7 @@ std::string get_data_from_url(const std::string &url) {
 }
 
 std::string replace_space_with_underscore(const std::string &str) {
-    auto result{str};
+    auto result(str);
     replace(result.begin(), result.end(), ' ', '_');
     return result;
 }

@@ -34,6 +34,7 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-3.8
           packages:
+            - g++-6
             - clang-3.8
       env: CC_TEMP=clang-3.8 CXX_TEMP=clang++-3.8
       before_install:
