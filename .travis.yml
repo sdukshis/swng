@@ -11,12 +11,21 @@ script:
   - mkdir build && cd build
   - cmake ..
   - cmake --build .
-
-after_script:
   - ./bin/test_swgn
 
 matrix:
   include:
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env: CC_TEMP=gcc-5 CXX_TEMP=g++-
+      before_install:
+        - sudo pip install conan
     - os: linux
       compiler: gcc
       addons:
@@ -43,6 +52,18 @@ matrix:
         - sudo pip install conan
     - os: osx
       osx_image: xcode7.3
+      compiler: clang
+      before_install:
+        - brew update
+        - brew install conan
+    - os: osx
+      osx_image: xcode6.4
+      compiler: clang
+      before_install:
+        - brew update
+        - brew install conan
+    - os: osx
+      osx_image: beta-xcode6.1
       compiler: clang
       before_install:
         - brew update
