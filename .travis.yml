@@ -1,33 +1,54 @@
-language: cpp
 sudo: required
 dist: trusty
 
 install:
-  - export CC=$CC_TEMP
-  - export CXX=$CXX_TEMP
   - conan install --build=missing
 
 script:
   - mkdir build && cd build
   - cmake ..
   - cmake --build .
-  - ./bin/test_swng
+  - ./bin/test_hello
 
 matrix:
   include:
     - os: linux
-      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-4.9
+      env:
+        - CC=gcc-4.9
+        - CXX=g++-4.9
+      before_install:
+        - sudo pip install conan
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env:
+        - CC=gcc-5
+        - CXX=g++-5
+      before_install:
+        - sudo pip install conan
+    - os: linux
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-      env: CC_TEMP=gcc-6 CXX_TEMP=g++-6
+      env:
+        - CC=gcc-6
+        - CXX=g++-6
       before_install:
         - sudo pip install conan
     - os: linux
-      compiler: clang
       addons:
         apt:
           sources:
@@ -36,24 +57,23 @@ matrix:
           packages:
             - g++-6
             - clang-3.8
-      env: CC_TEMP=clang-3.8 CXX_TEMP=clang++-3.8
+      env:
+        - CC=clang-3.8
+        - CXX=clang++-3.8
       before_install:
         - sudo pip install conan
     - os: osx
       osx_image: xcode7.3
-      compiler: clang
       before_install:
         - brew update
         - brew install conan
     - os: osx
       osx_image: xcode6.4
-      compiler: clang
       before_install:
         - brew update
         - brew install conan
     - os: osx
       osx_image: beta-xcode6.1
-      compiler: clang
       before_install:
         - brew update
         - brew install conan
