@@ -6,6 +6,7 @@
 #include <cctype>
 #include <sstream>
 #include <random>
+#include <except>
 
 #include <curl/curl.h>
 
