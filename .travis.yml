@@ -18,30 +18,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-4.9
-      env:
-        - CC=gcc-4.9
-        - CXX=g++-4.9
-      before_install:
-        - sudo pip install conan
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-      env:
-        - CC=gcc-5
-        - CXX=g++-5
-      before_install:
-        - sudo pip install conan
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
             - g++-6
       env:
         - CC=gcc-6
