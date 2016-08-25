@@ -1,20 +1,23 @@
 build:
-environment:
-    PYTHON: "C:\\Python27"
-    PYTHON_VERSION: "2.7.8"
-    PYTHON_ARCH: "32"
 
 install:
   - set PATH=%PATH%;%PYTHON%/Scripts/
   - pip.exe install conan # It install conan too
-  - conan install --build=missing
+  - conan install --build=missing -s compiler="Visual Studio" -s compiler.version=%TOOLCHAIN_VERSION%
 
 build_script:
   - mkdir build && cd build
-  - cmake -G"Visual Studio 14 2015 Win64" ..
-  - cmake --build . --config release
+  - cmake -G "Visual Studio %TOOLCHAIN_VERSION% Win64" ..
+  - cmake --build . --config release 
 
 test_script:
-  - cmd: ctest -C release -VV
+- cmd: ctest -C release -VV
 
-
+environment:
+  PYTHON: "C:\\Python27"
+  PYTHON_VERSION: "2.7.8"
+  PYTHON_ARCH: "32"
+  matrix:
+    - TOOLCHAIN_VERSION: 14
+    - TOOLCHAIN_VERSION: 12
+    - TOOLCHAIN_VERSION: 10
