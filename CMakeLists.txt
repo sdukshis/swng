@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(swng CXX)
 
-option(BUILD_TESTS "build unittests" ON)
+option(BUILD_TESTS "build unittests" OFF)
 
 include(conanbuildinfo.cmake)
 conan_basic_setup()
